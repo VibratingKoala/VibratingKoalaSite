@@ -438,3 +438,28 @@ h2::after {
     transform: none;
   }
 }
+
+/* Role progression within a company */
+.roles {
+  margin: 10px 0 0;
+  padding: 0 0 0 14px;
+  list-style: none;
+  border-left: 2px solid var(--line);
+  font-size: 15px;
+}
+.roles li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 12px;
+  padding: 2px 0;
+}
+.roles .date {
+  font-size: 13px;
+}
+@media (max-width: 560px) {
+  .roles li {
+    flex-direction: column;
+    padding: 3px 0;
+  }
+}
