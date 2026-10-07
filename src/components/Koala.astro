@@ -1,0 +1,171 @@
+---
+interface Props {
+  size?: number;
+}
+const { size = 112 } = Astro.props;
+---
+<button class="koala-button" type="button" aria-label="Poke the koala" title="Poke me">
+  <svg class="koala" width={size} height={size} viewBox="0 0 400 400" aria-hidden="true">
+    <g class="bob">
+      <g class="shake">
+        <g class="lines" fill="none" stroke="#C2405A" stroke-width="9" stroke-linecap="round">
+          <path class="line-1" d="M40 110 q-14 24 0 48"></path>
+          <path class="line-2" d="M18 96 q-22 38 0 76"></path>
+          <path class="line-1" d="M360 110 q14 24 0 48"></path>
+          <path class="line-2" d="M382 96 q22 38 0 76"></path>
+        </g>
+        <ellipse cx="200" cy="330" rx="92" ry="56" fill="#B5BFBA" stroke="#1E2328" stroke-width="7"></ellipse>
+        <path d="M40 322 Q80 292 120 322 T200 322 T280 322 T360 322" fill="none" stroke="#5E8F6E" stroke-width="12" stroke-linecap="round"></path>
+        <ellipse class="leaf leaf-l" cx="80" cy="300" rx="16" ry="8" fill="#7FB08F"></ellipse>
+        <ellipse class="leaf leaf-r" cx="320" cy="300" rx="16" ry="8" fill="#7FB08F"></ellipse>
+        <g class="ear ear-l">
+          <circle cx="108" cy="128" r="62" fill="#9AA5A0" stroke="#1E2328" stroke-width="7"></circle>
+          <circle cx="108" cy="132" r="34" fill="#F4C7C3"></circle>
+        </g>
+        <g class="ear ear-r">
+          <circle cx="292" cy="128" r="62" fill="#9AA5A0" stroke="#1E2328" stroke-width="7"></circle>
+          <circle cx="292" cy="132" r="34" fill="#F4C7C3"></circle>
+        </g>
+        <ellipse cx="200" cy="200" rx="118" ry="108" fill="#B5BFBA" stroke="#1E2328" stroke-width="7"></ellipse>
+        <ellipse class="cheek" cx="136" cy="230" rx="18" ry="10" fill="#F4A9A0"></ellipse>
+        <ellipse class="cheek" cx="264" cy="230" rx="18" ry="10" fill="#F4A9A0"></ellipse>
+        <g class="eye">
+          <circle cx="152" cy="192" r="12" fill="#1E2328"></circle>
+          <circle cx="156" cy="188" r="4" fill="#FFFFFF"></circle>
+        </g>
+        <g class="eye">
+          <circle cx="248" cy="192" r="12" fill="#1E2328"></circle>
+          <circle cx="252" cy="188" r="4" fill="#FFFFFF"></circle>
+        </g>
+        <ellipse cx="200" cy="222" rx="26" ry="32" fill="#1E2328"></ellipse>
+        <path d="M186 266 q14 12 28 0" fill="none" stroke="#1E2328" stroke-width="6" stroke-linecap="round"></path>
+        <ellipse cx="146" cy="320" rx="26" ry="18" fill="#B5BFBA" stroke="#1E2328" stroke-width="7"></ellipse>
+        <ellipse cx="254" cy="320" rx="26" ry="18" fill="#B5BFBA" stroke="#1E2328" stroke-width="7"></ellipse>
+      </g>
+    </g>
+  </svg>
+</button>
+
+<script>
+  // Poke: bigger buzz + phone vibration
+  document.querySelectorAll<HTMLButtonElement>('.koala-button').forEach((button) => {
+    button.addEventListener('click', () => {
+      button.classList.remove('poked');
+      void button.offsetWidth; // restart animation
+      button.classList.add('poked');
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        navigator.vibrate?.([60, 40, 60, 40, 120]);
+      }
+    });
+    button.addEventListener('animationend', (event) => {
+      if (event.animationName.includes('poke')) button.classList.remove('poked');
+    });
+  });
+</script>
+
+<style>
+  .koala-button {
+    display: block;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    border-radius: 50%;
+  }
+
+  .koala-button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .koala {
+    display: block;
+    overflow: visible;
+  }
+
+  /* Transform around own centre */
+  .bob, .shake, .ear, .eye, .leaf, .lines path, .cheek {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .ear-l { transform-origin: 80% 80%; }
+  .ear-r { transform-origin: 20% 80%; }
+  .leaf-l { rotate: -30deg; }
+  .leaf-r { rotate: -25deg; }
+  .cheek { opacity: 0.75; transition: opacity 0.2s; }
+  .lines path { opacity: 0.35; transition: opacity 0.2s; }
+
+  /* Idle */
+  .bob { animation: bob 4s ease-in-out infinite; }
+  .eye { animation: blink 5s infinite; }
+  .ear-l { animation: twitch-l 7s ease-in-out infinite; }
+  .ear-r { animation: twitch-r 7s ease-in-out 3.5s infinite; }
+
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes blink {
+    0%, 93%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
+  }
+  @keyframes twitch-l {
+    0%, 90%, 100% { transform: rotate(0); }
+    93% { transform: rotate(-12deg); }
+    96% { transform: rotate(4deg); }
+  }
+  @keyframes twitch-r {
+    0%, 90%, 100% { transform: rotate(0); }
+    93% { transform: rotate(12deg); }
+    96% { transform: rotate(-4deg); }
+  }
+
+  /* Hover */
+  .koala-button:hover .shake { animation: buzz 0.12s linear infinite; }
+  .koala-button:hover .lines path { opacity: 1; animation: pulse 0.3s ease-in-out infinite alternate; }
+  .koala-button:hover .line-2 { animation-delay: 0.15s; }
+  .koala-button:hover .cheek { opacity: 1; }
+
+  @keyframes buzz {
+    0% { transform: translate(0, 0) rotate(0); }
+    25% { transform: translate(-8px, 4px) rotate(-1.5deg); }
+    50% { transform: translate(8px, -4px) rotate(1.5deg); }
+    75% { transform: translate(-6px, -4px) rotate(-1deg); }
+    100% { transform: translate(0, 0) rotate(0); }
+  }
+  @keyframes pulse {
+    from { transform: scale(0.85); }
+    to { transform: scale(1.15); }
+  }
+
+  /* Poke */
+  .koala-button.poked .shake { animation: poke 0.7s linear; }
+  .koala-button.poked .lines path { opacity: 1; animation: pulse 0.15s ease-in-out 4 alternate; }
+  .koala-button.poked .eye { animation: squint 0.7s; }
+
+  @keyframes poke {
+    0%, 100% { transform: translate(0, 0) rotate(0) scale(1); }
+    10% { transform: translate(-16px, 6px) rotate(-5deg) scale(1.04); }
+    20% { transform: translate(16px, -6px) rotate(5deg) scale(1.04); }
+    30% { transform: translate(-14px, -6px) rotate(-4deg) scale(1.03); }
+    40% { transform: translate(14px, 6px) rotate(4deg) scale(1.03); }
+    50% { transform: translate(-10px, 4px) rotate(-3deg) scale(1.02); }
+    60% { transform: translate(10px, -4px) rotate(3deg) scale(1.02); }
+    70% { transform: translate(-6px, 2px) rotate(-2deg); }
+    80% { transform: translate(6px, -2px) rotate(2deg); }
+    90% { transform: translate(-2px, 0) rotate(-1deg); }
+  }
+  @keyframes squint {
+    0%, 100% { transform: scaleY(1); }
+    15%, 80% { transform: scaleY(0.25); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bob, .eye, .ear-l, .ear-r,
+    .koala-button:hover .shake, .koala-button:hover .lines path,
+    .koala-button.poked .shake, .koala-button.poked .lines path, .koala-button.poked .eye {
+      animation: none;
+    }
+  }
+</style>

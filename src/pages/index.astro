@@ -1,0 +1,262 @@
+---
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/400-italic.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '../styles/global.css';
+import Koala from '../components/Koala.astro';
+import Background from '../components/Background.astro';
+
+const description =
+  'Bruce Lim, backend developer at OSBR in Kuala Lumpur. Previously full-stack .NET at HealthMetrics.';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bruce Lim</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#F4F1EC" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1F2326" media="(prefers-color-scheme: dark)" />
+    <meta property="og:title" content="Bruce Lim" />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://vibratingkoala.my" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href="https://vibratingkoala.my/" />
+    <script is:inline>
+      // Set theme before paint to avoid a flash
+      (function () {
+        var theme;
+        try { theme = localStorage.getItem('theme'); } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.classList.add('js');
+      })();
+    </script>
+  </head>
+  <body>
+    <Background />
+    <div class="page">
+      <header class="site-header">
+        <a class="wordmark" href="#top">vibratingkoala</a>
+        <button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme">
+          <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+          <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        </button>
+      </header>
+
+      <main id="top">
+        <div class="intro reveal">
+          <div class="intro-text">
+            <h1>Bruce Lim</h1>
+            <svg class="squiggle" viewBox="0 0 168 14" aria-hidden="true"><path d="M2 7 Q 9 1 16 7 T 30 7 T 44 7 T 58 7 T 72 7 T 86 7 T 100 7 T 114 7 T 128 7 T 142 7 T 156 7 T 166 7" fill="none" stroke-width="2.5" stroke-linecap="round"></path></svg>
+            <p>Backend developer at <a href="https://osbrjp.com">OSBR</a>, Kuala Lumpur.</p>
+            <p class="muted">Full-stack .NET before that, frontend before that. Into AI since secondary school; first got hands-on with it at uni.</p>
+          </div>
+          <div class="intro-koala">
+            <Koala />
+          </div>
+        </div>
+        <p class="links reveal" style="--delay: 0.15s">
+          <a href="mailto:brucelimzw@outlook.com">Email</a>
+          <a href="https://github.com/VibratingKoala">GitHub</a>
+          <a href="https://www.linkedin.com/in/brucelimzhiwei/">LinkedIn</a>
+        </p>
+
+        <section id="work">
+          <h2 class="reveal">Work</h2>
+
+          <article class="entry reveal">
+            <div class="entry-head">
+              <h3><a href="https://osbrjp.com">OSBR</a> · Back End Developer</h3>
+              <span class="date">Mar 2026 – now</span>
+            </div>
+            <p class="meta">Kuala Lumpur · AI software studio · <a href="https://osbrjp.com">osbrjp.com</a></p>
+            <ul>
+              <li>Built the AI agent workflow that moved 700+ MSAD/MSID pages onto a StorybookJS design system in about two weeks (solo at first, later with one more dev)</li>
+              <li>Building the in-house HR system: Slack bot (EN/JP), Go CLI, admin console, MCP tools</li>
+              <li>Building Miko, a desktop assistant on Claude Code</li>
+              <li>Rebuilt the <a href="https://handbook.osbrjp.com">company handbook</a> as an editable app on Cloudflare Workers</li>
+              <li>Trying out AI tools for client work</li>
+            </ul>
+            <p class="stack">TypeScript · Go · Rust · Cloudflare Workers · D1 · Claude Code · MCP</p>
+          </article>
+
+          <article class="entry reveal">
+            <div class="entry-head">
+              <h3><a href="https://healthmetrics.com">HealthMetrics</a> · Software Engineer</h3>
+              <span class="date">May 2021 – Feb 2026</span>
+            </div>
+            <p class="meta">Remote · employee health benefits platform · junior → engineer in 2023 · <a href="https://healthmetrics.com">healthmetrics.com</a></p>
+            <ul>
+              <li>Tech lead for the Indonesia and Thailand localisation; joined while it was Malaysia-only</li>
+              <li>Feature team: AngularJS, .NET, ABP framework</li>
+              <li>In-house finance microservice with bank integration</li>
+              <li>Took turns leading the production bug-fix team</li>
+            </ul>
+            <p class="stack">C# · .NET · ABP · AngularJS · Azure</p>
+          </article>
+
+          <article class="entry reveal">
+            <div class="entry-head">
+              <h3><a href="https://www.dsm.com.my">Digital Systems (M)</a> · Software Developer</h3>
+              <span class="date">Dec 2019 – May 2021</span>
+            </div>
+            <p class="meta">Shah Alam · IT solutions provider · intern → part-time → full-time · <a href="https://www.dsm.com.my">dsm.com.my</a></p>
+            <ul>
+              <li>Vue frontends and their UI design</li>
+              <li>Frontend–backend integration and API docs</li>
+            </ul>
+          </article>
+        </section>
+
+        <section id="projects" class="projects">
+          <h2 class="reveal">Projects</h2>
+
+          <article class="entry reveal">
+            <div class="entry-head">
+              <h3>Miko</h3>
+              <span class="date">2026 · in progress</span>
+            </div>
+            <p>A desktop cat for macOS with Claude Code as her brain.</p>
+            <ul>
+              <li>Talks back out loud, takes meeting notes</li>
+              <li>Runs her own Claude Code sessions</li>
+              <li>MCP client and server</li>
+            </ul>
+            <div class="shots">
+              <img src="/images/miko-hero.jpg" alt="Miko-chan site: Turn Claude Code into a pet" width="1440" height="780" />
+              <div class="shots-row">
+                <img src="/images/miko-pet.jpg" alt="Miko-chan on the desktop with a speech bubble and chat box" width="1440" height="780" loading="lazy" />
+                <img src="/images/miko-features.jpg" alt="Miko-chan feature list" width="1440" height="780" loading="lazy" />
+              </div>
+            </div>
+            <p class="stack">Rust · Tauri 2 · three.js · <a href="https://www.osbrjp.com/work/miko-assistant/">Case study</a> · <a href="https://miko-site.osbrjp.workers.dev/">Site (WIP)</a></p>
+          </article>
+
+          <article class="entry reveal">
+            <div class="entry-head">
+              <h3>MSAD/MSID website migration</h3>
+              <span class="date">2026</span>
+            </div>
+            <p>Started it alone; a second developer joined later. 700+ legacy HTML pages rebuilt on a StorybookJS design system in ~2 weeks, against an estimated 6+ months by hand.</p>
+            <ul>
+              <li>Claude agents analyse, transform and validate each page</li>
+              <li>Mapping scripts set hard rules from old components to new</li>
+              <li>Automated checks flag every page before it ships</li>
+            </ul>
+            <p class="stack">Claude Code · StorybookJS · <a href="https://www.osbrjp.com/work/ai-powered-html-website-migration/">Case study</a></p>
+          </article>
+
+          <article class="entry reveal">
+            <div class="entry-head">
+              <h3><a href="https://www.crestmalaysia.org/">CREST Malaysia</a></h3>
+              <span class="date">2026 · in progress</span>
+            </div>
+            <p>Website revamp and backend for a humanitarian non-profit that had no engineering setup before.</p>
+            <ul>
+              <li>New site in Astro on Cloudflare Workers, with a contact form via Resend</li>
+              <li>CMS backend Worker: gallery albums and photo uploads on D1 + R2</li>
+              <li>Admin dashboard behind Cloudflare Access (planned)</li>
+              <li>Set up their GitHub org, repos, docs and end-to-end tests in CI</li>
+            </ul>
+            <p class="stack">Astro · TypeScript · Cloudflare Workers · D1 · R2 · Resend</p>
+          </article>
+
+          <article class="entry reveal">
+            <h3>Miko Manager</h3>
+            <p>OSBR's HR bot: attendance, leave and claims from Slack, a CLI, a console or MCP. Moved off Apps Script onto Cloudflare Workers + D1.</p>
+            <p class="stack">TypeScript · Go · Workers · D1 · internal</p>
+          </article>
+
+          <article class="entry reveal">
+            <h3><a href="https://handbook.osbrjp.com">OSBR Handbook</a></h3>
+            <p>OSBR's public handbook. Moved it from a static VitePress site to an app anyone on the team can edit in the browser.</p>
+            <ul>
+              <li>Sign in with GitHub; repo permissions are the only access control</li>
+              <li>Saving an edit opens a pull request, committed as the person who made it</li>
+              <li>Drafts, plus an in-app page to review and approve changes</li>
+              <li>llms.txt and per-page Markdown so AI agents can read it</li>
+              <li>Migrated all 55 pages to a validated content schema</li>
+            </ul>
+            <p class="stack">Astro · Cloudflare Workers · Terraform · CloudFront · <a href="https://github.com/osbrjp/handbook">GitHub repo</a></p>
+          </article>
+        </section>
+
+        <section id="uni">
+          <h2 class="reveal">University</h2>
+          <article class="entry reveal" style="border-bottom: 0">
+            <div class="entry-head">
+              <h3>BSc (Hons) Computer Science</h3>
+              <span class="date">2018 – 2020</span>
+            </div>
+            <p class="meta">Sunway University / Lancaster University</p>
+            <ul>
+              <li>Final-year research: hybrid PSO-ABC (particle swarm optimisation + artificial bee colony)</li>
+              <li>My first hands-on AI work, after being curious about it since secondary school</li>
+              <li>Few papers on the combination then, and years before AI went mainstream</li>
+            </ul>
+          </article>
+        </section>
+
+        <section id="contact">
+          <h2 class="reveal">Contact</h2>
+          <ul class="contact-list reveal">
+            <li><a href="mailto:brucelimzw@outlook.com">brucelimzw@outlook.com</a></li>
+            <li><a href="https://github.com/VibratingKoala">github.com/VibratingKoala</a></li>
+            <li><a href="https://www.linkedin.com/in/brucelimzhiwei/">linkedin.com/in/brucelimzhiwei</a></li>
+          </ul>
+          <p class="meta" style="margin-top: 10px">Kuala Lumpur, GMT+8</p>
+        </section>
+      </main>
+
+      <footer class="site-footer">Last updated October 2026.</footer>
+    </div>
+
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('.theme-toggle');
+      const root = document.documentElement;
+
+      function label() {
+        const text = root.dataset.theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+        toggle?.setAttribute('aria-label', text);
+        toggle?.setAttribute('title', text);
+      }
+
+      label();
+      toggle?.addEventListener('click', () => {
+        const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        try { localStorage.setItem('theme', next); } catch {}
+        label();
+        toggle?.classList.remove('spin');
+        void toggle?.offsetWidth; // restart animation
+        toggle?.classList.add('spin');
+      });
+
+      // Scroll reveal, staggered
+      const revealed = document.querySelectorAll<HTMLElement>('.reveal');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (items) => {
+            items
+              .filter((item) => item.isIntersecting)
+              .forEach((item, i) => {
+                const el = item.target as HTMLElement;
+                if (!el.style.getPropertyValue('--delay')) el.style.setProperty('--delay', `${i * 0.08}s`);
+                el.classList.add('in');
+                observer.unobserve(el);
+              });
+          },
+          { rootMargin: '0px 0px -8% 0px' },
+        );
+        revealed.forEach((el) => observer.observe(el));
+      } else {
+        revealed.forEach((el) => el.classList.add('in'));
+      }
+    </script>
+  </body>
+</html>
