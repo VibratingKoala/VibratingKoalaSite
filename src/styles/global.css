@@ -463,3 +463,34 @@ h2::after {
     padding: 3px 0;
   }
 }
+
+/* Project groups */
+.group {
+  margin-top: 28px;
+}
+.group-head {
+  padding-bottom: 4px;
+}
+.group-head h3 {
+  font-size: 20px;
+}
+h4 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+.group .entry {
+  margin-left: 14px;
+  padding-left: 16px;
+  border-left: 2px solid var(--line);
+  border-top: 0;
+}
+.projects .group .entry:first-of-type {
+  padding-top: 12px;
+}
+@media (max-width: 560px) {
+  .group .entry {
+    margin-left: 0;
+    padding-left: 14px;
+  }
+}
