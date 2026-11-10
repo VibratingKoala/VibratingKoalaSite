@@ -56,24 +56,6 @@ const description =
     </ul>
   </section>
 
-  <section>
-    <h2 class="reveal">Design</h2>
-    <div class="sumi reveal">
-      <FudenekoMark size={64} />
-      <div class="sumi-text">
-        <p>An ensō ring with cat ears, drawn by the app as a project opens. Sumi ink, washi paper, a vermilion seal for approve.</p>
-        <ul class="swatches">
-          <li><span class="chip chip-dark" style="--swatch: var(--fn-sumi)"></span>Sumi</li>
-          <li><span class="chip chip-dark" style="--swatch: var(--fn-ink)"></span>Ink</li>
-          <li><span class="chip" style="--swatch: var(--fn-shiro)"></span>Shiro</li>
-          <li><span class="chip" style="--swatch: var(--fn-washi)"></span>Washi</li>
-          <li><span class="chip" style="--swatch: var(--fn-vermilion)"></span>Vermilion</li>
-          <li><span class="chip" style="--swatch: var(--fn-bamboo)"></span>Bamboo</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
   <p class="stack project-stack">SwiftUI · Swift · Apple Pencil · Anthropic, OpenAI and Gemini APIs · private repository</p>
 </Base>
 
@@ -147,58 +129,8 @@ const description =
     gap: 10px;
   }
 
-  /* Fudeneko's own palette, only inside this panel */
-  .sumi {
-    margin-top: 12px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 20px;
-    padding: 18px;
-    border-radius: 8px;
-    background: var(--fn-sumi);
-    color: var(--fn-shiro);
-  }
-  .sumi-text {
-    flex: 1 1 260px;
-    min-width: 0;
-  }
-  .sumi-text p {
-    margin: 0;
-    font-size: 15px;
-    line-height: 1.55;
-  }
-  .swatches {
-    margin: 10px 0 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 12px;
-  }
-  .swatches li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    font-size: 12px;
-    line-height: 1.2;
-  }
-  .chip {
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    background: var(--swatch);
-  }
-  /* Sumi and Ink are close to the panel's own Sumi; a border shows their edge */
-  .chip-dark {
-    border: 1px solid var(--fn-edge);
-  }
   .project-stack {
     margin: 40px 0 0;
-  }
-  .sumi :global(.fudeneko-mark) {
-    color: var(--fn-shiro);
   }
   .intro-figure .fn-tile {
     padding: 12px;
