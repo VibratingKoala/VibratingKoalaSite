@@ -1,0 +1,112 @@
+---
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/400-italic.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '../styles/global.css';
+import Background from '../components/Background.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  ogUrl: string;
+  wordmarkHref: string;
+}
+
+const { title, description, canonical, ogUrl, wordmarkHref } = Astro.props;
+const footerLead = Astro.slots.has('footer-lead');
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#F4F1EC" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1F2326" media="(prefers-color-scheme: dark)" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={ogUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <script is:inline>
+      // Set theme before paint to avoid a flash
+      (function () {
+        var theme;
+        try { theme = localStorage.getItem('theme'); } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.classList.add('js');
+      })();
+    </script>
+  </head>
+  <body>
+    <Background />
+    <div class="page">
+      <header class="site-header">
+        <a class="wordmark" href={wordmarkHref}>vibratingkoala</a>
+        <button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme">
+          <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+          <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        </button>
+      </header>
+
+      <main id="top">
+        <slot />
+      </main>
+
+      {footerLead ? (
+        <footer class="site-footer split"><slot name="footer-lead" /><span>Last updated November 2026.</span></footer>
+      ) : (
+        <footer class="site-footer">Last updated November 2026.</footer>
+      )}
+    </div>
+
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('.theme-toggle');
+      const root = document.documentElement;
+
+      function label() {
+        const text = root.dataset.theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+        toggle?.setAttribute('aria-label', text);
+        toggle?.setAttribute('title', text);
+      }
+
+      label();
+      toggle?.addEventListener('click', () => {
+        const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        try { localStorage.setItem('theme', next); } catch {}
+        label();
+        toggle?.classList.remove('spin');
+        void toggle?.offsetWidth; // restart animation
+        toggle?.classList.add('spin');
+      });
+
+      // Scroll reveal, staggered
+      const revealed = document.querySelectorAll<HTMLElement>('.reveal');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (items) => {
+            items
+              .filter((item) => item.isIntersecting)
+              .forEach((item, i) => {
+                const el = item.target as HTMLElement;
+                if (!el.style.getPropertyValue('--delay')) el.style.setProperty('--delay', `${i * 0.08}s`);
+                el.classList.add('in');
+                observer.unobserve(el);
+              });
+          },
+          { rootMargin: '0px 0px -8% 0px' },
+        );
+        revealed.forEach((el) => observer.observe(el));
+      } else {
+        revealed.forEach((el) => el.classList.add('in'));
+      }
+    </script>
+  </body>
+</html>

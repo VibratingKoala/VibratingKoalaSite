@@ -1,0 +1,82 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const description =
+  'Fudeneko: design websites on iPad, with a Pencil. A work-in-progress personal project by Bruce Lim.';
+const url = 'https://vibratingkoala.my/projects/fudeneko';
+---
+<Base
+  title="Fudeneko: Bruce Lim"
+  description={description}
+  canonical={url}
+  ogUrl={url}
+  wordmarkHref="/"
+>
+  <p class="back"><a href="/#projects">← Projects</a></p>
+
+  <div class="notice reveal">
+    <p><strong>Work in progress.</strong> Fudeneko isn't on the App Store yet; this page shows where it is.</p>
+  </div>
+
+  <div class="intro project-intro reveal">
+    <div class="intro-text">
+      <h1>Fudeneko <span class="muted" lang="ja">筆猫</span></h1>
+      <p>Design websites on iPad, with a Pencil.</p>
+      <p class="muted">For frontend developers who want to design quickly, and for designers who never write code. iPad and iPhone first; Android later.</p>
+    </div>
+    <div class="intro-mark">
+      <img class="mark mark-light" src="/images/fudeneko-mark-light.svg" alt="Fudeneko's mark: a brush-stroke ring with cat ears" width="96" height="96" />
+      <img class="mark mark-dark" src="/images/fudeneko-mark-dark.svg" alt="Fudeneko's mark: a brush-stroke ring with cat ears" width="96" height="96" />
+    </div>
+  </div>
+  <p class="project-meta">2026 · personal · in progress · <a href="https://fudeneko.vibratingkoala.my">fudeneko.vibratingkoala.my</a></p>
+
+  <figure class="shots project-shot reveal">
+    <img class="shot-design" src="/images/fudeneko-design.jpg" alt="Design: a Pencil sketch of a page beside the chat with Fude" width="1440" height="1000" />
+    <figcaption>A design mock-up, not a screenshot of a release.</figcaption>
+  </figure>
+
+  <section>
+    <h2 class="reveal">How it works</h2>
+    <div class="steps reveal">
+      <div class="step">
+        <h3>Sketch</h3>
+        <p>Draw the page with Apple Pencil, or just describe it in the chat.</p>
+      </div>
+      <div class="step">
+        <h3>Design</h3>
+        <p>Fude reads the sketch back, you correct it, and it designs versions you can stamp.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="reveal">Choices</h2>
+    <ul class="choices reveal">
+      <li><strong>Your keys stay yours.</strong> Bring your own AI key; it lives in the device Keychain and only ever goes to its own provider. No backend.</li>
+      <li><strong>A portable core.</strong> The logic is a Foundation-only Swift package that mirrors a planned Kotlin Multiplatform core, for Android later.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="reveal">Design</h2>
+    <div class="sumi reveal">
+      <img class="sumi-mark" src="/images/fudeneko-mark-dark.svg" alt="" width="64" height="64" />
+      <div class="sumi-text">
+        <p>An ensō ring with cat ears, drawn by the app as a project opens. Sumi ink, washi paper, a vermilion seal for approve.</p>
+        <div class="swatches">
+          <span class="swatch" style="--swatch: #16171B; --swatch-border: #3A3E4A" title="Sumi"></span>
+          <span class="swatch" style="--swatch: #23262E" title="Ink"></span>
+          <span class="swatch" style="--swatch: #F4EEE3" title="Shiro"></span>
+          <span class="swatch" style="--swatch: #F3E7D3" title="Washi"></span>
+          <span class="swatch" style="--swatch: #C8362B" title="Vermilion"></span>
+          <span class="swatch" style="--swatch: #D9B36C" title="Bamboo"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p class="stack project-stack">SwiftUI · Swift 6 · Apple Pencil · Anthropic, OpenAI and Gemini APIs · about 2,300 core tests · private repository</p>
+
+  <a slot="footer-lead" href="/#projects">← Projects</a>
+</Base>
