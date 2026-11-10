@@ -109,7 +109,7 @@ img {
   min-width: 0;
 }
 
-.intro-koala {
+.intro-figure {
   flex: 1 1 120px;
 }
 
@@ -230,8 +230,6 @@ h3 {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 1440 / 780;
-  object-fit: cover;
   border: 1px solid var(--line);
   border-radius: 4px;
 }
@@ -283,12 +281,12 @@ h3 {
     flex: 1 1 auto;
   }
 
-  .intro-koala {
+  .intro-figure {
     flex: 0 0 72px;
     align-self: flex-start;
   }
 
-  .intro-koala svg {
+  .intro-figure svg {
     width: 72px;
     height: 72px;
   }
@@ -322,7 +320,9 @@ body,
 .theme-toggle,
 .entry,
 .site-footer,
-.shots img {
+.shots img,
+.fn-tile,
+.fudeneko-mark {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -493,4 +493,56 @@ h4 {
     margin-left: 0;
     padding-left: 14px;
   }
+}
+
+/* Fudeneko's colours (its docs/design.md); used only for its mark, its tile and
+   the Sumi panel on /projects/fudeneko */
+:root {
+  --fn-sumi: #16171B;
+  --fn-ink: #23262E;
+  --fn-shiro: #F4EEE3;
+  --fn-washi: #F3E7D3;
+  --fn-vermilion: #C8362B;
+  --fn-bamboo: #D9B36C;
+  --fn-dark-gold: #8B6A2B;
+  --fn-bristle: #CFC8BB;
+  --fn-edge: #3A3E4A;
+}
+
+/* Fudeneko's mark (FudenekoMark.astro) goes on Sumi or Washi only: Ink on Washi
+   (mark-on-light), Shiro on Sumi (mark-on-dark). Its ink is currentColor. */
+.fudeneko-mark {
+  display: block;
+  color: var(--fn-ink);
+}
+.fn-tile {
+  display: block;
+  flex: 0 0 auto;
+  width: max-content;
+  padding: 4px;
+  border-radius: 8px;
+  background: var(--fn-washi);
+}
+:root[data-theme="dark"] .fn-tile {
+  background: var(--fn-sumi);
+}
+:root[data-theme="dark"] .fn-tile .fudeneko-mark {
+  color: var(--fn-shiro);
+}
+
+/* Baseline-aligned so the h4's baseline is the name's and lines up with the date */
+h4.with-mark {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 10px;
+}
+h4.with-mark .fn-tile {
+  align-self: center;
+}
+.wip {
+  font-size: 15px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--muted);
 }

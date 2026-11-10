@@ -1,0 +1,221 @@
+---
+import Base from '../../layouts/Base.astro';
+import FudenekoMark from '../../components/FudenekoMark.astro';
+
+const description =
+  'Fudeneko: design websites on iPad, with a Pencil. A work-in-progress personal project by Bruce Lim.';
+---
+<Base
+  title="Fudeneko: Bruce Lim"
+  description={description}
+  wordmarkHref="/"
+>
+  <p class="back"><a href="/#projects">← Projects</a></p>
+
+  <div class="notice reveal">
+    <p><strong>Work in progress.</strong> Fudeneko isn't on the App Store yet; this page shows where it is.</p>
+  </div>
+
+  <div class="intro project-intro reveal">
+    <div class="intro-text">
+      <h1>Fudeneko <span class="muted" lang="ja">筆猫</span></h1>
+      <p>Design websites on iPad, with a Pencil.</p>
+      <p class="muted">For frontend developers who want to design quickly, and for designers who never write code. iPad and iPhone first; Android later.</p>
+    </div>
+    <div class="intro-figure">
+      <span class="fn-tile"><FudenekoMark size={96} /></span>
+    </div>
+  </div>
+  <p class="date project-meta reveal">2026 · personal · in progress</p>
+
+  <figure class="shots project-shot reveal">
+    {/* sizes: .page is 720 px with 24 px padding, 16 px at ≤560 */}
+    <img src="/images/fudeneko-design.jpg" srcset="/images/fudeneko-design-1180.jpg 1180w, /images/fudeneko-design.jpg 2360w" sizes="(max-width: 560px) calc(100vw - 32px), (max-width: 720px) calc(100vw - 48px), 672px" alt="Design: a Pencil sketch of a page beside the chat with Fude" width="1180" height="820" />
+    <figcaption>A design mock-up, not a screenshot of a release.</figcaption>
+  </figure>
+
+  <section>
+    <h2 class="reveal">How it works</h2>
+    <div class="steps reveal">
+      <div class="step">
+        <h3>Sketch</h3>
+        <p>Draw the page with Apple Pencil, or just describe it in the chat.</p>
+      </div>
+      <div class="step">
+        <h3>Design</h3>
+        <p>Fude reads the sketch back, you correct it, and it designs versions you can stamp.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="reveal">Choices</h2>
+    <ul class="choices reveal">
+      <li><strong>Your keys stay yours.</strong> Bring your own AI key; it lives in the device Keychain and only ever goes to its own provider. No backend.</li>
+      <li><strong>A portable core.</strong> The logic is a Foundation-only Swift package that mirrors a planned Kotlin Multiplatform core, for Android later.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="reveal">Design</h2>
+    <div class="sumi reveal">
+      <FudenekoMark size={64} />
+      <div class="sumi-text">
+        <p>An ensō ring with cat ears, drawn by the app as a project opens. Sumi ink, washi paper, a vermilion seal for approve.</p>
+        <ul class="swatches">
+          <li><span class="chip chip-dark" style="--swatch: var(--fn-sumi)"></span>Sumi</li>
+          <li><span class="chip chip-dark" style="--swatch: var(--fn-ink)"></span>Ink</li>
+          <li><span class="chip" style="--swatch: var(--fn-shiro)"></span>Shiro</li>
+          <li><span class="chip" style="--swatch: var(--fn-washi)"></span>Washi</li>
+          <li><span class="chip" style="--swatch: var(--fn-vermilion)"></span>Vermilion</li>
+          <li><span class="chip" style="--swatch: var(--fn-bamboo)"></span>Bamboo</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <p class="stack project-stack">SwiftUI · Swift · Apple Pencil · Anthropic, OpenAI and Gemini APIs · private repository</p>
+</Base>
+
+<style>
+  .back {
+    margin: 24px 0 0;
+    font-size: 15px;
+  }
+  .notice {
+    margin-top: 20px;
+    padding: 14px 16px;
+    border: 1.5px solid var(--accent);
+    border-radius: 8px;
+    background: var(--card);
+  }
+  .notice p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .notice strong,
+  .choices strong {
+    font-weight: 600;
+  }
+  .intro.project-intro {
+    padding: 40px 0 8px;
+  }
+  h1 .muted {
+    font-weight: 400;
+  }
+  .project-meta {
+    margin: 8px 0 0;
+  }
+  .project-shot {
+    margin: 28px 0 0;
+  }
+  .project-shot figcaption {
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .steps {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .step {
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--card);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  .step h3 {
+    font-size: 17px;
+  }
+  .step p {
+    margin: 6px 0 0;
+    font-size: 15px;
+    color: var(--muted);
+  }
+  .choices {
+    margin: 12px 0 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Fudeneko's own palette, only inside this panel */
+  .sumi {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    padding: 18px;
+    border-radius: 8px;
+    background: var(--fn-sumi);
+    color: var(--fn-shiro);
+  }
+  .sumi-text {
+    flex: 1 1 260px;
+    min-width: 0;
+  }
+  .sumi-text p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .swatches {
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+  }
+  .swatches li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  .chip {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--swatch);
+  }
+  /* Sumi and Ink are close to the panel's own Sumi; a border shows their edge */
+  .chip-dark {
+    border: 1px solid var(--fn-edge);
+  }
+  .project-stack {
+    margin: 40px 0 0;
+  }
+  .sumi :global(.fudeneko-mark) {
+    color: var(--fn-shiro);
+  }
+  .intro-figure .fn-tile {
+    padding: 12px;
+    border-radius: 20px;
+  }
+
+  @media (max-width: 560px) {
+    .intro.project-intro {
+      padding-top: 24px;
+    }
+    /* 56 + 2 × 8 = the 72 px figure slot */
+    .intro-figure .fn-tile {
+      padding: 8px;
+      border-radius: 14px;
+    }
+    .intro-figure .fn-tile :global(.fudeneko-mark) {
+      width: 56px;
+      height: 56px;
+    }
+    .steps {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>
