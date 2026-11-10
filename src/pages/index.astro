@@ -109,9 +109,10 @@ const description =
           <li>Desktop, tablet and mobile frames, one tab each</li>
         </ul>
         <div class="shots">
+          {/* sizes: .page is 720 px with 24 px padding (16 px at ≤560), and a .group entry adds 32 px of indent (16 at ≤560) */}
           <img src="/images/fudeneko-design.jpg" srcset="/images/fudeneko-design-1180.jpg 1180w, /images/fudeneko-design.jpg 2360w" sizes="(max-width: 560px) calc(100vw - 48px), (max-width: 720px) calc(100vw - 80px), 640px" alt="A design mock-up of Fudeneko's Design screen: a Pencil sketch beside the chat with Fude" width="1180" height="820" loading="lazy" />
         </div>
-        <p class="stack">SwiftUI · Swift 6 · Apple Pencil · <a href="/projects/fudeneko">Read more</a></p>
+        <p class="stack">SwiftUI · Swift · Apple Pencil · <a href="/projects/fudeneko">Read more</a></p>
       </article>
       </div>
 

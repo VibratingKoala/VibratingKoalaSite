@@ -23,12 +23,13 @@ const description =
       <p class="muted">For frontend developers who want to design quickly, and for designers who never write code. iPad and iPhone first; Android later.</p>
     </div>
     <div class="intro-figure">
-      <span class="fn-tile"><FudenekoMark size={96} label="Fudeneko's mark: a brush-stroke ring with cat ears" /></span>
+      <span class="fn-tile"><FudenekoMark size={96} /></span>
     </div>
   </div>
   <p class="date project-meta reveal">2026 · personal · in progress</p>
 
   <figure class="shots project-shot reveal">
+    {/* sizes: .page is 720 px with 24 px padding, 16 px at ≤560 */}
     <img src="/images/fudeneko-design.jpg" srcset="/images/fudeneko-design-1180.jpg 1180w, /images/fudeneko-design.jpg 2360w" sizes="(max-width: 560px) calc(100vw - 32px), (max-width: 720px) calc(100vw - 48px), 672px" alt="Design: a Pencil sketch of a page beside the chat with Fude" width="1180" height="820" />
     <figcaption>A design mock-up, not a screenshot of a release.</figcaption>
   </figure>
@@ -73,7 +74,7 @@ const description =
     </div>
   </section>
 
-  <p class="stack project-stack">SwiftUI · Swift 6 · Apple Pencil · Anthropic, OpenAI and Gemini APIs · private repository</p>
+  <p class="stack project-stack">SwiftUI · Swift · Apple Pencil · Anthropic, OpenAI and Gemini APIs · private repository</p>
 </Base>
 
 <style>
