@@ -320,7 +320,9 @@ body,
 .theme-toggle,
 .entry,
 .site-footer,
-.shots img {
+.shots img,
+.fn-tile,
+.fudeneko-mark {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -493,7 +495,8 @@ h4 {
   }
 }
 
-/* Fudeneko's colours (its docs/design.md); used only for its mark and the Sumi panel */
+/* Fudeneko's colours (its docs/design.md); used only for its mark, its tile and
+   the Sumi panel on /projects/fudeneko */
 :root {
   --fn-sumi: #16171B;
   --fn-ink: #23262E;
@@ -521,13 +524,8 @@ h4 {
 :root[data-theme="dark"] .fn-tile {
   background: var(--fn-sumi);
 }
-:root[data-theme="dark"] .fn-tile .fudeneko-mark,
-.sumi .fudeneko-mark {
+:root[data-theme="dark"] .fn-tile .fudeneko-mark {
   color: var(--fn-shiro);
-}
-.intro-figure .fn-tile {
-  padding: 12px;
-  border-radius: 20px;
 }
 
 /* Baseline-aligned so the h4's baseline is the name's and lines up with the date */
@@ -545,139 +543,4 @@ h4.with-mark .fn-tile {
   font-weight: 400;
   font-style: italic;
   color: var(--muted);
-}
-
-/* Project page */
-.back {
-  margin: 24px 0 0;
-  font-size: 15px;
-}
-.notice {
-  margin-top: 20px;
-  padding: 14px 16px;
-  border: 1.5px solid var(--accent);
-  border-radius: 8px;
-  background: var(--card);
-}
-.notice p {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.55;
-}
-.notice strong,
-.choices strong {
-  font-weight: 600;
-}
-.intro.project-intro {
-  padding: 40px 0 8px;
-}
-h1 .muted {
-  font-weight: 400;
-}
-.project-meta {
-  margin: 8px 0 0;
-}
-.project-shot {
-  margin: 28px 0 0;
-}
-.project-shot figcaption {
-  font-size: 14px;
-  color: var(--muted);
-}
-.steps {
-  margin-top: 12px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-.step {
-  padding: 16px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: var(--card);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-.step h3 {
-  font-size: 17px;
-}
-.step p {
-  margin: 6px 0 0;
-  font-size: 15px;
-  color: var(--muted);
-}
-.choices {
-  margin: 12px 0 0;
-  padding-left: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Fudeneko's own palette, only inside this panel */
-.sumi {
-  margin-top: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 20px;
-  padding: 18px;
-  border-radius: 8px;
-  background: var(--fn-sumi);
-  color: var(--fn-shiro);
-}
-.sumi-text {
-  flex: 1 1 260px;
-  min-width: 0;
-}
-.sumi-text p {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.55;
-}
-.swatches {
-  margin: 10px 0 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 12px;
-}
-.swatches li {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  font-size: 12px;
-  line-height: 1.2;
-}
-.chip {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  background: var(--swatch);
-}
-/* Sumi and Ink are close to the panel's own Sumi; a border shows their edge */
-.chip-dark {
-  border: 1px solid var(--fn-edge);
-}
-.project-stack {
-  margin: 40px 0 0;
-}
-
-@media (max-width: 560px) {
-  .intro.project-intro {
-    padding-top: 24px;
-  }
-  /* 56 + 2 × 8 = the 72 px figure slot */
-  .intro-figure .fn-tile {
-    padding: 8px;
-    border-radius: 14px;
-  }
-  .intro-figure .fn-tile .fudeneko-mark {
-    width: 56px;
-    height: 56px;
-  }
-  .steps {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }

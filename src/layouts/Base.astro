@@ -13,7 +13,8 @@ interface Props {
 }
 
 const { title, description, wordmarkHref } = Astro.props;
-// build.format 'file' gives pathnames like /projects/fudeneko.html; the served URL has no .html
+// build.format 'file' gives /projects/fudeneko.html and, for the home page, /index.html;
+// the served URLs are /projects/fudeneko and /
 const canonical = new URL(Astro.url.pathname.replace(/(?:(^|\/)index)?\.html$/, '$1'), Astro.site).href;
 ---
 <!doctype html>
