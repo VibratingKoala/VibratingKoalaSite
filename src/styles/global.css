@@ -109,7 +109,7 @@ img {
   min-width: 0;
 }
 
-.intro-koala {
+.intro-figure {
   flex: 1 1 120px;
 }
 
@@ -230,7 +230,6 @@ h3 {
   display: block;
   width: 100%;
   height: auto;
-  object-fit: cover;
   border: 1px solid var(--line);
   border-radius: 4px;
 }
@@ -282,12 +281,12 @@ h3 {
     flex: 1 1 auto;
   }
 
-  .intro-koala {
+  .intro-figure {
     flex: 0 0 72px;
     align-self: flex-start;
   }
 
-  .intro-koala svg {
+  .intro-figure svg {
     width: 72px;
     height: 72px;
   }
@@ -494,15 +493,41 @@ h4 {
   }
 }
 
-/* Fudeneko's mark (FudenekoMark.astro): its ink is currentColor, Fudeneko's Ink or Shiro */
+/* Fudeneko's colours (its docs/design.md); used only for its mark and the Sumi panel */
+:root {
+  --fn-sumi: #16171B;
+  --fn-ink: #23262E;
+  --fn-shiro: #F4EEE3;
+  --fn-washi: #F3E7D3;
+  --fn-vermilion: #C8362B;
+  --fn-bamboo: #D9B36C;
+  --fn-edge: #3A3E4A;
+}
+
+/* Fudeneko's mark (FudenekoMark.astro) goes on Sumi or Washi only: Ink on Washi
+   (mark-on-light), Shiro on Sumi (mark-on-dark). Its ink is currentColor. */
 .fudeneko-mark {
   display: block;
-  flex: 0 0 auto;
-  color: #23262E;
+  color: var(--fn-ink);
 }
-:root[data-theme="dark"] .fudeneko-mark,
+.fn-tile {
+  display: block;
+  flex: 0 0 auto;
+  width: max-content;
+  padding: 4px;
+  border-radius: 8px;
+  background: var(--fn-washi);
+}
+:root[data-theme="dark"] .fn-tile {
+  background: var(--fn-sumi);
+}
+:root[data-theme="dark"] .fn-tile .fudeneko-mark,
 .sumi .fudeneko-mark {
-  color: #F4EEE3;
+  color: var(--fn-shiro);
+}
+.intro-figure .fn-tile {
+  padding: 12px;
+  border-radius: 20px;
 }
 
 /* Baseline-aligned so the h4's baseline is the name's and lines up with the date */
@@ -512,7 +537,7 @@ h4.with-mark {
   align-items: baseline;
   gap: 0 10px;
 }
-h4.with-mark .fudeneko-mark {
+h4.with-mark .fn-tile {
   align-self: center;
 }
 .wip {
@@ -549,14 +574,8 @@ h4.with-mark .fudeneko-mark {
 h1 .muted {
   font-weight: 400;
 }
-.intro-mark {
-  flex: 1 1 96px;
-}
 .project-meta {
   margin: 8px 0 0;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 14px;
-  color: var(--muted);
 }
 .project-shot {
   margin: 28px 0 0;
@@ -603,8 +622,8 @@ h1 .muted {
   gap: 20px;
   padding: 18px;
   border-radius: 8px;
-  background: #16171B;
-  color: #F4EEE3;
+  background: var(--fn-sumi);
+  color: var(--fn-shiro);
 }
 .sumi-text {
   flex: 1 1 260px;
@@ -639,7 +658,7 @@ h1 .muted {
 }
 /* Sumi and Ink are close to the panel's own Sumi; a border shows their edge */
 .chip-dark {
-  border: 1px solid #3A3E4A;
+  border: 1px solid var(--fn-edge);
 }
 .project-stack {
   margin: 40px 0 0;
@@ -649,13 +668,14 @@ h1 .muted {
   .intro.project-intro {
     padding-top: 24px;
   }
-  .intro-mark {
-    flex: 0 0 72px;
-    align-self: flex-start;
+  /* 56 + 2 × 8 = the 72 px figure slot */
+  .intro-figure .fn-tile {
+    padding: 8px;
+    border-radius: 14px;
   }
-  .intro-mark .fudeneko-mark {
-    width: 72px;
-    height: 72px;
+  .intro-figure .fn-tile .fudeneko-mark {
+    width: 56px;
+    height: 56px;
   }
   .steps {
     grid-template-columns: minmax(0, 1fr);
