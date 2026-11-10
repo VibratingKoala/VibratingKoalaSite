@@ -15,7 +15,6 @@ interface Props {
 const { title, description, wordmarkHref } = Astro.props;
 // build.format 'file' gives pathnames like /projects/fudeneko.html; the served URL has no .html
 const canonical = new URL(Astro.url.pathname.replace(/(index)?\.html$/, ''), Astro.site).href;
-const footerLead = Astro.slots.has('footer-lead');
 ---
 <!doctype html>
 <html lang="en">
@@ -59,7 +58,7 @@ const footerLead = Astro.slots.has('footer-lead');
         <slot />
       </main>
 
-      <footer class:list={['site-footer', { split: footerLead }]}><slot name="footer-lead" /><span>Last updated November 2026.</span></footer>
+      <footer class="site-footer">Last updated November 2026.</footer>
     </div>
 
     <script>

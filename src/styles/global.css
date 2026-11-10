@@ -230,7 +230,6 @@ h3 {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 1440 / 780;
   object-fit: cover;
   border: 1px solid var(--line);
   border-radius: 4px;
@@ -523,11 +522,6 @@ h4.with-mark .fudeneko-mark {
   color: var(--muted);
 }
 
-/* The Design mock-up is 2360:1640, not the Miko shots' 1440:780 */
-.shots img.shot-design {
-  aspect-ratio: 2360 / 1640;
-}
-
 /* Project page */
 .back {
   margin: 24px 0 0;
@@ -545,7 +539,8 @@ h4.with-mark .fudeneko-mark {
   font-size: 15px;
   line-height: 1.55;
 }
-strong {
+.notice strong,
+.choices strong {
   font-weight: 600;
 }
 .intro.project-intro {
@@ -611,11 +606,6 @@ h1 .muted {
   background: #16171B;
   color: #F4EEE3;
 }
-.sumi-mark {
-  flex: 0 0 auto;
-  width: 64px;
-  height: 64px;
-}
 .sumi-text {
   flex: 1 1 260px;
   min-width: 0;
@@ -653,18 +643,6 @@ h1 .muted {
 }
 .project-stack {
   margin: 40px 0 0;
-}
-.site-footer.split {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 16px;
-}
-.site-footer.split a {
-  color: var(--muted);
-}
-.site-footer.split a:hover {
-  color: var(--accent);
 }
 
 @media (max-width: 560px) {
