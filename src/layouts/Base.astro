@@ -9,12 +9,12 @@ import Background from '../components/Background.astro';
 interface Props {
   title: string;
   description: string;
-  canonical: string;
-  ogUrl: string;
   wordmarkHref: string;
 }
 
-const { title, description, canonical, ogUrl, wordmarkHref } = Astro.props;
+const { title, description, wordmarkHref } = Astro.props;
+// build.format 'file' gives pathnames like /projects/fudeneko.html; the served URL has no .html
+const canonical = new URL(Astro.url.pathname.replace(/(index)?\.html$/, ''), Astro.site).href;
 const footerLead = Astro.slots.has('footer-lead');
 ---
 <!doctype html>
@@ -28,7 +28,7 @@ const footerLead = Astro.slots.has('footer-lead');
     <meta name="theme-color" content="#1F2326" media="(prefers-color-scheme: dark)" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={ogUrl} />
+    <meta property="og:url" content={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonical} />
     <script is:inline>
@@ -59,11 +59,7 @@ const footerLead = Astro.slots.has('footer-lead');
         <slot />
       </main>
 
-      {footerLead ? (
-        <footer class="site-footer split"><slot name="footer-lead" /><span>Last updated November 2026.</span></footer>
-      ) : (
-        <footer class="site-footer">Last updated November 2026.</footer>
-      )}
+      <footer class:list={['site-footer', { split: footerLead }]}><slot name="footer-lead" /><span>Last updated November 2026.</span></footer>
     </div>
 
     <script>

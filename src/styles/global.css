@@ -495,17 +495,15 @@ h4 {
   }
 }
 
-/* Fudeneko: brand marks, one per theme */
-.mark {
+/* Fudeneko's mark (FudenekoMark.astro): its ink is currentColor, Fudeneko's Ink or Shiro */
+.fudeneko-mark {
   display: block;
   flex: 0 0 auto;
+  color: #23262E;
 }
-.mark-dark { display: none; }
-:root[data-theme="dark"] .mark-light { display: none; }
-:root[data-theme="dark"] .mark-dark { display: block; }
-:root[data-theme="dark"] img.mark,
-:root[data-theme="dark"] img.sumi-mark {
-  filter: none;
+:root[data-theme="dark"] .fudeneko-mark,
+.sumi .fudeneko-mark {
+  color: #F4EEE3;
 }
 
 /* Baseline-aligned so the h4's baseline is the name's and lines up with the date */
@@ -515,7 +513,7 @@ h4.with-mark {
   align-items: baseline;
   gap: 0 10px;
 }
-h4.with-mark .mark {
+h4.with-mark .fudeneko-mark {
   align-self: center;
 }
 .wip {
@@ -628,17 +626,30 @@ h1 .muted {
   line-height: 1.55;
 }
 .swatches {
-  margin-top: 10px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px 12px;
 }
-.swatch {
+.swatches li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  line-height: 1.2;
+}
+.chip {
   width: 28px;
   height: 28px;
   border-radius: 6px;
   background: var(--swatch);
-  border: 1px solid var(--swatch-border, transparent);
+}
+/* Sumi and Ink are close to the panel's own Sumi; a border shows their edge */
+.chip-dark {
+  border: 1px solid #3A3E4A;
 }
 .project-stack {
   margin: 40px 0 0;
@@ -664,7 +675,7 @@ h1 .muted {
     flex: 0 0 72px;
     align-self: flex-start;
   }
-  .intro-mark img {
+  .intro-mark .fudeneko-mark {
     width: 72px;
     height: 72px;
   }

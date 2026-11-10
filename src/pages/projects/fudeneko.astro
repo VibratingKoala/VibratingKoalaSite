@@ -1,15 +1,13 @@
 ---
 import Base from '../../layouts/Base.astro';
+import FudenekoMark from '../../components/FudenekoMark.astro';
 
 const description =
   'Fudeneko: design websites on iPad, with a Pencil. A work-in-progress personal project by Bruce Lim.';
-const url = 'https://vibratingkoala.my/projects/fudeneko';
 ---
 <Base
   title="Fudeneko: Bruce Lim"
   description={description}
-  canonical={url}
-  ogUrl={url}
   wordmarkHref="/"
 >
   <p class="back"><a href="/#projects">← Projects</a></p>
@@ -25,11 +23,10 @@ const url = 'https://vibratingkoala.my/projects/fudeneko';
       <p class="muted">For frontend developers who want to design quickly, and for designers who never write code. iPad and iPhone first; Android later.</p>
     </div>
     <div class="intro-mark">
-      <img class="mark mark-light" src="/images/fudeneko-mark-light.svg" alt="Fudeneko's mark: a brush-stroke ring with cat ears" width="96" height="96" />
-      <img class="mark mark-dark" src="/images/fudeneko-mark-dark.svg" alt="Fudeneko's mark: a brush-stroke ring with cat ears" width="96" height="96" />
+      <FudenekoMark size={96} label="Fudeneko's mark: a brush-stroke ring with cat ears" />
     </div>
   </div>
-  <p class="project-meta">2026 · personal · in progress · <a href="https://fudeneko.vibratingkoala.my">fudeneko.vibratingkoala.my</a></p>
+  <p class="project-meta reveal">2026 · personal · in progress · <a href="https://fudeneko.vibratingkoala.my">fudeneko.vibratingkoala.my</a></p>
 
   <figure class="shots project-shot reveal">
     <img class="shot-design" src="/images/fudeneko-design.jpg" alt="Design: a Pencil sketch of a page beside the chat with Fude" width="1180" height="820" />
@@ -61,17 +58,17 @@ const url = 'https://vibratingkoala.my/projects/fudeneko';
   <section>
     <h2 class="reveal">Design</h2>
     <div class="sumi reveal">
-      <img class="sumi-mark" src="/images/fudeneko-mark-dark.svg" alt="" width="64" height="64" />
+      <FudenekoMark size={64} class="sumi-mark" />
       <div class="sumi-text">
         <p>An ensō ring with cat ears, drawn by the app as a project opens. Sumi ink, washi paper, a vermilion seal for approve.</p>
-        <div class="swatches">
-          <span class="swatch" style="--swatch: #16171B; --swatch-border: #3A3E4A" title="Sumi"></span>
-          <span class="swatch" style="--swatch: #23262E" title="Ink"></span>
-          <span class="swatch" style="--swatch: #F4EEE3" title="Shiro"></span>
-          <span class="swatch" style="--swatch: #F3E7D3" title="Washi"></span>
-          <span class="swatch" style="--swatch: #C8362B" title="Vermilion"></span>
-          <span class="swatch" style="--swatch: #D9B36C" title="Bamboo"></span>
-        </div>
+        <ul class="swatches">
+          <li><span class="chip chip-dark" style="--swatch: #16171B"></span>Sumi</li>
+          <li><span class="chip chip-dark" style="--swatch: #23262E"></span>Ink</li>
+          <li><span class="chip" style="--swatch: #F4EEE3"></span>Shiro</li>
+          <li><span class="chip" style="--swatch: #F3E7D3"></span>Washi</li>
+          <li><span class="chip" style="--swatch: #C8362B"></span>Vermilion</li>
+          <li><span class="chip" style="--swatch: #D9B36C"></span>Bamboo</li>
+        </ul>
       </div>
     </div>
   </section>

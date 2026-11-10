@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Koala from '../components/Koala.astro';
+import FudenekoMark from '../components/FudenekoMark.astro';
 
 const description =
   'Bruce Lim, backend developer at OSBR in Kuala Lumpur. Previously full-stack .NET at HealthMetrics.';
@@ -8,8 +9,6 @@ const description =
 <Base
   title="Bruce Lim"
   description={description}
-  canonical="https://vibratingkoala.my/"
-  ogUrl="https://vibratingkoala.my"
   wordmarkHref="#top"
 >
     <div class="intro reveal">
@@ -97,8 +96,7 @@ const description =
       <article class="entry reveal">
         <div class="entry-head">
           <h4 class="with-mark">
-            <img class="mark mark-light" src="/images/fudeneko-mark-light.svg" alt="" width="28" height="28" />
-            <img class="mark mark-dark" src="/images/fudeneko-mark-dark.svg" alt="" width="28" height="28" />
+            <FudenekoMark size={28} />
             <a href="/projects/fudeneko">Fudeneko</a>
             <span class="wip">work in progress</span>
           </h4>
